@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Article from './components/Article';
+import ArticleDisplay from './components/ArticleDisplay.js';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
                <Article/>
             </div>
             <div class="col-sm">
-               <p> testing testing 123 </p>
+               <ArticleDisplay/>
             </div>
           </div>
        </div>
