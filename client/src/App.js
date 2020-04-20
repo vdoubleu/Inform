@@ -1,26 +1,31 @@
 import React from 'react';
 import './App.css';
+import {Provider} from 'react-redux';
 
 import Article from './components/Article';
-import ArticleDisplay from './components/ArticleDisplay.js';
+import ArticleDisplay from './components/ArticleDisplay';
+
+import store from './store';
 
 function App() {
   return (
-    <div style={{backgroundImage: 'url(' + require('./images/background.jpg') + ')'}}>
-      <header> INFORM </header>
+    <Provider store={store}>
+       <div style={{backgroundColor: '#333333'}}>
+         <header> INFORM </header>
 
 
-       <div class="container">
-          <div class="row">
-            <div class="col-sm">
-               <Article/>
-            </div>
-            <div class="col-sm">
-               <ArticleDisplay/>
-            </div>
+          <div className="container">
+             <div className="row">
+               <div className="col-sm">
+                  <Article/>
+               </div>
+               <div className="col-sm">
+                  <ArticleDisplay/>
+               </div>
+             </div>
           </div>
        </div>
-    </div>
+    </Provider>
   );
 }
 

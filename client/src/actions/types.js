@@ -1,0 +1,2 @@
+export const SET_CURR_ARTICLE = 'SET_CURR_ARTICLE';
+export const FETCH_ARTICLES = 'FETCH_ARTICLES';
