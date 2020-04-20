@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {connect} from 'react-redux';
-//import {fetchArticles} from '../actions/articleActions.js';
-
-    
 
 class ArticleDisplay extends Component {
    render() {
@@ -19,7 +16,7 @@ class ArticleDisplay extends Component {
 }
 
 const mapStateToProps = state => ({
-   currArticle: state.articles.items.length == 0? {body: ""} : state.articles.items[state.articles.currentID]
+   currArticle: state.articles.items.length == 0? {body: "", title: "", id:0} : state.articles.items[state.articles.currentID]
 })
 
 export default connect(mapStateToProps) (ArticleDisplay);

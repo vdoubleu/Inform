@@ -35,9 +35,9 @@ class Article extends Component {
 
       return (
          <div>
-            <ul className="list-group">
-            {articleItems}
-            </ul>
+            <div className="list-group" id="articleList">
+              {articleItems}
+            </div>
          </div>
       )
    }
