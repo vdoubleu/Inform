@@ -1,0 +1,15 @@
+#card{
+   background-color: white;
+   border-radius: 10px;
+   border-style: inset;
+   border-width: 2px;
+}
+
+.arrow{
+   width: 30px;
+   height: 30px;
+   margin-left:100px;
+}
+
+
+
