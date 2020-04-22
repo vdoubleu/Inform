@@ -9,14 +9,14 @@ const Header = props =>{
          <div className="container">
             <div className="row">
                <div className="col-xl">
-                  <Link to="/article" style={{textDecoration: 'none'}}>
+                  <Link to="/" style={{textDecoration: 'none'}}>
                      <img id="logo" src={require("../images/logo.png")}/>
                      <h1 id="title"> INFORM </h1>
                   </Link>
                </div>
                <div className="col-lg">
                   <Switch>
-                     <Route path="/article" exact>
+                     <Route path="/" exact>
                         <h1 className="currTab"> Home </h1>
                      </Route>
                      <Route path="/aboutus" exact>
@@ -28,15 +28,15 @@ const Header = props =>{
                   </Switch>
                </div>
                <div className="col-">
-                        <Link to="/article"> 
-                           <button type="button" class="btn btn-outline-light"> Home </button>
-                        </Link>
-                        <Link to="/aboutus"> 
-                           <button type="button" class="btn btn-outline-light"> About Us </button>
-                        </Link>
-                        <Link to="/addstory"> 
-                           <button type="button" class="btn btn-dark"> Add Story </button>
-                        </Link>
+                  <Link to="/"> 
+                     <button type="button" class="btn btn-outline-light"> Home </button>
+                  </Link>
+                  <Link to="/aboutus"> 
+                     <button type="button" class="btn btn-outline-light"> About Us </button>
+                  </Link>
+                  <Link to="/addstory"> 
+                     <button type="button" class="btn btn-dark"> Add Story </button>
+                  </Link>
                </div>
             </div>
          </div>

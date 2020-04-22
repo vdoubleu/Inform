@@ -1,24 +1,23 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddStory from './addStory/AddStory';
+import PastPosted from './addStory/PastPosted';
 
 const AddStoryPage = props => {
+   function sendData(e){
+
+   }
+
    return(
-      <div>
-        <div className="container">
-            <div className="form-group">
-               <label for="titleInput" id="storyTitleLabel"> Title </label>
-               <input type="text" class="form-control" />
+      <div className="container">
+         <div className="row">
+            <div className="col">
+               <AddStory />
             </div>
-
-            <div className="form-group">
-               <label for="textInput" id="storyTextLabel"> Story </label>
-               <textarea type="text" class="form-control" rows="3" />
+            <div className="col">
+               <PastPosted />
             </div>
-
-            <button type="button" className="btn btn-primary"> 
-               Post
-            </button>
-        </div>
+         </div>
       </div>
    );
 }

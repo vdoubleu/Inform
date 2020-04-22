@@ -16,7 +16,7 @@ function App() {
          <Header />
 
          <Switch>
-            <Route path="/article" exact>
+            <Route path="/" exact>
                <ArticlePage /> 
             </ Route>
             <Route path="/aboutus">
