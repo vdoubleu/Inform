@@ -16,8 +16,8 @@
 }
 
 .body{
-   /*background-color: #31243D;*/
-   background-color: white;
+   background-color: #E4E4E4;
+   /*background-color: white;*/
    height: 85vh;
    padding: 10px;
 }
@@ -30,6 +30,6 @@
 
 .footer{
    height: 7vh;
-   background-color: #261824;
-   color: white;
+   background-color: #DBDBDB;
+   color: #DBDBDB;
 }

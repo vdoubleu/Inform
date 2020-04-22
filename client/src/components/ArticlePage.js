@@ -10,7 +10,7 @@ const ArticlePage = props => {
       <div className="body">
          <div className="container">
             <div id="articlesTitle" className="row">
-               Stories
+               Trending
             </div>
             <div className="row">
                <div className="col-sm">

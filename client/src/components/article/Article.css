@@ -3,6 +3,7 @@
    border-radius: 10px;
    color: white;
    background-color: #31243D;
+   min-height: 200px;
 }
 
 #articleList{
