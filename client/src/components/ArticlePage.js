@@ -4,13 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Article from "./article/Article";
 import ArticleDisplay from "./article/ArticleDisplay";
 
+import "./ArticlePage.css";
 
 const ArticlePage = props => {
    return(
       <div className="body">
          <div className="container">
             <div id="articlesTitle" className="row">
-               Stories
+               Trending
             </div>
             <div className="row">
                <div className="col-sm">
