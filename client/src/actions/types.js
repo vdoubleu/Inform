@@ -1,2 +1,4 @@
 export const SET_CURR_ARTICLE = 'SET_CURR_ARTICLE';
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const ADD_MY_POST = 'ADD_MY_POST';
+export const FETCH_MY_POSTS = 'FETCH_MY_POSTS';

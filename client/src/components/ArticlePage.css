@@ -1,0 +1,10 @@
+#articlesTitle{
+   color: black;
+   font-size: 50px;
+   margin-left: 10px;
+}
+
+.body{
+   background-color: #efefef;
+   height: 93vh;
+}

@@ -1,0 +1,13 @@
+.postButtons{
+   margin: 10px;
+   border-radius: 10px;
+   color: white;
+   background-color: #31243D;
+   min-height: 250px;
+}
+
+#pastPostList{
+   height: 500px;
+   overflow-y: auto;
+   overflow-x: hidden;
+}

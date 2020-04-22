@@ -1,8 +1,10 @@
 import React from 'react';
-import './App.css';
 import {Provider} from 'react-redux';
 
+import Header from './components/Header';
 import ArticlePage from './components/ArticlePage';
+import AboutUsPage from './components/AboutUs';
+import AddStoryPage from './components/AddStoryPage';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import store from './store';
@@ -11,15 +13,18 @@ function App() {
   return (
     <Router>
        <Provider store={store}>
-         <div className="head">
-            <img id="logo" src={require("./images/logo.png")}/>
-            <h1 id="title"> INFORM </h1>
-         </div>
+         <Header />
 
          <Switch>
-            <Route path="/article">
+            <Route path="/" exact>
                <ArticlePage /> 
             </ Route>
+            <Route path="/aboutus">
+               <AboutUsPage />
+            </ Route>
+            <Route path="/addstory">
+               <AddStoryPage />
+            </Route>
          </Switch>
 
        </Provider>
