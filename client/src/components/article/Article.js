@@ -22,7 +22,7 @@ class Article extends Component {
       else
          btn = $(e.target);
 
-      this.props.setCurrArticle(btn[0].id);
+      this.props.setCurrArticle(btn[0].id - 1);
    }
 
    render() {
