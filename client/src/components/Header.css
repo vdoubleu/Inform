@@ -1,10 +1,17 @@
 .head{
    background-color: #261824;
-   height: 8vh;
+   display: flex;
+   justify-content: space-between;
+   padding: 0 20px;
+   flex-wrap: wrap;
+}
+
+#name{
+   display:flex;
+   justify-content: flex-end;
 }
 
 #logo{
-   float:left;
    margin-left: 10px;
    height: 6vh;
    width: 6vh;
@@ -18,8 +25,8 @@
 .currTab{
    color: white;
    text-align: center;
-   margin-right: 100px;
-   font-size: 6vh;
+   font-size: 5vh;
+   margin-top: 0.5vh;
 }
 
 .nav-item{
@@ -27,7 +34,6 @@
 }
 
 .btn{
-   transform:10px;
    margin-left: 20px;
    margin-top: 10px;
 }
