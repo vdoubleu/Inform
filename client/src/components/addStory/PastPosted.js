@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {connect} from 'react-redux';
 import {fetchPosts} from '../../actions/mypostActions';
 
@@ -10,6 +9,7 @@ const PastPosted = props => {
    useEffect(() => {
       props.fetchPosts();
    }, []);
+
 
    const postItems = props.myPosts.map(post => (
       <button key={post.id} id={post.id} type="button" className="list-group-item list-group-item-action postButtons">
@@ -27,7 +27,7 @@ const PastPosted = props => {
 }
 
 const mapStateToProps = state => ({
-   myPosts: state.myposts.myposts
-})
+   myPosts: state.myposts.myposts,
+});
 
 export default connect(mapStateToProps, {fetchPosts})(PastPosted);

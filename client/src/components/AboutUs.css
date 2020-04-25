@@ -1,0 +1,15 @@
+#aboutUsTitle{
+   font-size: 50px;
+   margin-left: 10px;
+}
+
+#aboutUsBody{
+   margin: 15px;
+   margin-bottom: 70px;
+}
+
+#info{
+   display:flex;
+   justify-content: space-around;
+}
+

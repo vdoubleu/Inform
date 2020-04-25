@@ -2,7 +2,6 @@ import {ADD_MY_POST, FETCH_MY_POSTS} from '../actions/types';
 
 const initialState = {
    myposts: [],
-   newpost: {}
 }
 
 export default function(state = initialState, action){
@@ -10,12 +9,11 @@ export default function(state = initialState, action){
       case ADD_MY_POST:
          return{
             ...state,
-            newpost: action.payload,
+            myposts: [action.payload, ...state.myposts] 
          }
       case FETCH_MY_POSTS:
          return{
-            ...state,
-            myposts: action.payload,
+            myposts: action.payload
          }
       default:
          return state;
