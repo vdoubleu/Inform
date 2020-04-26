@@ -1,0 +1,14 @@
+.arrow{
+   width: 30px;
+   height: 30px;
+   margin: 5px;
+}
+
+.arrow:hover{
+   filter: invert(70%);
+}
+
+
+.arrow-clicked{
+   filter: invert(50%);
+}

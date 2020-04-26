@@ -4,10 +4,6 @@ import AddStory from './addStory/AddStory';
 import PastPosted from './addStory/PastPosted';
 
 const AddStoryPage = props => {
-   function sendData(e){
-
-   }
-
    return(
       <div className="container">
          <div className="row">

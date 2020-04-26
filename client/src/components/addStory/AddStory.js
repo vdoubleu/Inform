@@ -9,7 +9,7 @@ const AddStory = props => {
    const [postArticle, setPostArticle] = useState("");
 
    function sendData(e){
-      if(postTitle != "" && postArticle != ""){
+      if(postTitle !== "" && postArticle !== ""){
          const newPost = {
             title: postTitle,
             body: postArticle

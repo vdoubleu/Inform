@@ -9,7 +9,7 @@ const Header = props =>{
          <div>
             <Link to="/" style={{textDecoration: 'none'}}>
                <div id="name">
-                  <img id="logo" src={require("../images/logo.png")}/>
+                  <img id="logo" src={require("../images/logo.png")} alt="logo" />
                   <h1 id="title"> INFORM </h1>
                </div>
             </Link>
@@ -31,13 +31,13 @@ const Header = props =>{
 
          <div className="nav-buttons">
             <Link to="/"> 
-               <button type="button" class="btn btn-outline-light"> Feed </button>
+               <button type="button" className="btn btn-outline-light"> Feed </button>
             </Link>
             <Link to="/aboutus"> 
-               <button type="button" class="btn btn-outline-light"> About Us </button>
+               <button type="button" className="btn btn-outline-light"> About Us </button>
             </Link>
             <Link to="/addstory"> 
-               <button type="button" class="btn btn-dark"> Add Story </button>
+               <button type="button" className="btn btn-dark"> Add Story </button>
             </Link>
          </div>
 
