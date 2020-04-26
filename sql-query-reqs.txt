@@ -1,0 +1,25 @@
+This is the layout of the database i was envisioning
+
+main table
+id    title    body     catagory    author-name   date-posted    foreign-key(for likes and dislikes)   
+
+
+
+the foreign key will lead to another table storing the likes and dislikes
+id    name     opinion(either -1, 0, 1 for dislike, no opinion, like)
+
+
+These are the sql queries i need written out
+
+update/add opinion
+given an opinion, an article id, and the name of the user, add/change the opinion for that article
+
+get opinion
+given an article id, and the name of the user, return that users opinion of that article if it exists
+
+add article
+given a title, a body, a catagory, an author-name and date-posted, add the entry to the main table
+
+get article
+given a title, a body, a catagory, an author-name and date-posted, return the entire entry. So, id, title, body, catagory, author-name, data-posted. No need to return likes and dislikes
+
