@@ -1,0 +1,31 @@
+#center{
+   display: flex;
+   justify-content: center;
+   height: 100vh;
+   background-color: #efefef;
+}
+
+#outline-box{
+   border-radius: 5%;
+   margin-top: 10%;
+   width: 500px;
+   height: 500px;
+   padding: 10px;
+   display: flex;
+   align-items: center;
+   background-color: #31243D;
+}
+
+#login-title{
+   font-size: 70px;
+   margin-top: 10px;
+   margin-bottom: 40px;
+   color: white;
+}
+
+#login-logo{
+   margin-top: 30px;
+   margin-left: 15px;
+   height: 200px;
+   width: 200px;
+}

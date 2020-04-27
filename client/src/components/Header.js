@@ -1,6 +1,5 @@
 import React from 'react';
 import './Header.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, Route, Switch} from 'react-router-dom';
 
 const Header = props =>{
@@ -17,26 +16,26 @@ const Header = props =>{
 
          <div className="curr-tab">
             <Switch>
-               <Route path="/" exact>
+               <Route path="/in" exact>
                   <h1 className="currTab"> Feed </h1>
                </Route>
-               <Route path="/aboutus" exact>
+               <Route path="/in/aboutus" exact>
                   <h1 className="currTab"> About Us </h1>
                </Route>
-               <Route path="/addstory" exact>
+               <Route path="/in/addstory" exact>
                   <h1 className="currTab"> Add Story </h1> 
                </Route>
             </Switch>
          </div>
 
          <div className="nav-buttons">
-            <Link to="/"> 
+            <Link to="/in"> 
                <button type="button" className="btn btn-outline-light"> Feed </button>
             </Link>
-            <Link to="/aboutus"> 
+            <Link to="/in/aboutus"> 
                <button type="button" className="btn btn-outline-light"> About Us </button>
             </Link>
-            <Link to="/addstory"> 
+            <Link to="/in/addstory"> 
                <button type="button" className="btn btn-dark"> Add Story </button>
             </Link>
          </div>

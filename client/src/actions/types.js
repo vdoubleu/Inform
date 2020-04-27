@@ -4,3 +4,4 @@ export const UPDATE_OPINION = 'UPDATE_OPINION';
 export const FETCH_OPINION = 'FETCH_OPINION';
 export const ADD_MY_POST = 'ADD_MY_POST';
 export const FETCH_MY_POSTS = 'FETCH_MY_POSTS';
+export const SET_DATA = '../actions/types';
