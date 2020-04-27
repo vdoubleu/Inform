@@ -1,9 +1,14 @@
 .articleButtons{
-   margin: 10px;
+   margin-bottom: 20px;
    border-radius: 10px;
    color: white;
    background-color: #31243D;
    min-height: 175px;
+}
+
+#displayList{
+   padding: 10px;
+   border-radius: 10px;
 }
 
 #articleList{
@@ -17,8 +22,8 @@
 }
  
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     border-radius: 10px;
+    opacity: 100%;
 }
  
 ::-webkit-scrollbar-thumb {

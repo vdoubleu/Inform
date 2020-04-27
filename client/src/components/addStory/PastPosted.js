@@ -17,6 +17,7 @@ const PastPosted = props => {
          <p> {post.body} </p>
       </button>
    ));
+
    return(
       <div>
          <div className="list-group" id="pastPostList">

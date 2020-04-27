@@ -8,6 +8,7 @@ import {ReactComponent as DownVote} from '../../../images/like-2.svg';
 
 const Opinion = props => {
    function upClick(e){
+      e.preventDefault();
       if(props.opinion === 1)
          props.updateOpinion(0);
       else
@@ -15,6 +16,7 @@ const Opinion = props => {
    }
 
    function downClick(e){
+      e.preventDefault();
       if(props.opinion === -1)
          props.updateOpinion(0);
       else
