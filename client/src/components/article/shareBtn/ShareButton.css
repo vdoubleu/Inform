@@ -1,0 +1,9 @@
+.share-icon{
+   height: 50px;
+   width: 50px;
+   margin: 0 20px;
+}
+
+.share-icon:hover{
+   opacity: 50%;
+}

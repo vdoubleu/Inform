@@ -1,14 +1,18 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import {useHistory} from 'react-router-dom';
+import {setData} from '../actions/userdataActions';
+import {connect} from 'react-redux';
 
 import "./LoginPage.css";
-
 
 const LoginPage = props => {
    const history = useHistory();
 
    const responseGooglePass = response => {
+      const newData = response.getAuthResponse().id_token;
+
+      props.setData(newData);
       history.push("/in");
    }
 
@@ -35,4 +39,4 @@ const LoginPage = props => {
    );
 }
 
-export default LoginPage;
+export default connect(null, {setData})(LoginPage);
