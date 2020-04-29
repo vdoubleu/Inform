@@ -10,7 +10,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 #mycursor.execute("CREATE DATABASE informdb")
-#mycursor.execute("CREATE TABLE articles (title VARCHAR(255), body TEXT, catagory VARCHAR(20), authorname VARCHAR(255), dateposted DATETIME)")
+#mycursor.execute("CREATE TABLE articles (title VARCHAR(255), body TEXT, catagory VARCHAR(20), authorname VARCHAR(255), date bigint)")
 
 
 ATITLE = "test article title"

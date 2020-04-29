@@ -10,7 +10,7 @@ const LoginPage = props => {
    const history = useHistory();
 
    const responseGooglePass = response => {
-      const newData = response.getAuthResponse().id_token;
+      const newData = response.getBasicProfile().getName();
 
       props.setData(newData);
       history.push("/in");

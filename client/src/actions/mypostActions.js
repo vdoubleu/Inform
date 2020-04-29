@@ -1,7 +1,7 @@
 import {ADD_MY_POST, FETCH_MY_POSTS} from '../actions/types';
 
-export const fetchPosts = () => dispatch => {
-   fetch('https://jsonplaceholder.typicode.com/posts')
+export const fetchPosts = author => dispatch => {
+   fetch('http://0.0.0.0:8080/VictorW/InformAPI/1.0.0/article?start=1&maxAmount=50&author=' + author)
    .then(res=>res.json())
    .then(articles => dispatch({
          type: FETCH_MY_POSTS,
@@ -11,7 +11,7 @@ export const fetchPosts = () => dispatch => {
 };
 
 export const addPost = postData => dispatch => {
-   fetch('https://jsonplaceholder.typicode.com/posts', {
+   fetch('http://0.0.0.0:8080/VictorW/InformAPI/1.0.0/article', {
       method: 'POST',
       headers: {
          'content-type': 'application/json'

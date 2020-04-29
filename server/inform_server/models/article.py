@@ -14,15 +14,15 @@ class Article(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, id: int=None, author: str=None, _date: datetime=None, category: str=None, title: str=None, body: str=None):  # noqa: E501
+    def __init__(self, id: int=None, author: str=None, post_time: int=None, category: str=None, title: str=None, body: str=None):  # noqa: E501
         """Article - a model defined in Swagger
 
         :param id: The id of this Article.  # noqa: E501
         :type id: int
         :param author: The author of this Article.  # noqa: E501
         :type author: str
-        :param _date: The _date of this Article.  # noqa: E501
-        :type _date: datetime
+        :param post_time: The post_time of this Article.  # noqa: E501
+        :type post_time: int
         :param category: The category of this Article.  # noqa: E501
         :type category: str
         :param title: The title of this Article.  # noqa: E501
@@ -33,7 +33,7 @@ class Article(Model):
         self.swagger_types = {
             'id': int,
             'author': str,
-            '_date': datetime,
+            'post_time': int,
             'category': str,
             'title': str,
             'body': str
@@ -42,14 +42,14 @@ class Article(Model):
         self.attribute_map = {
             'id': 'id',
             'author': 'author',
-            '_date': 'date',
+            'post_time': 'postTime',
             'category': 'category',
             'title': 'title',
             'body': 'body'
         }
         self._id = id
         self._author = author
-        self.__date = _date
+        self._post_time = post_time
         self._category = category
         self._title = title
         self._body = body
@@ -110,27 +110,27 @@ class Article(Model):
         self._author = author
 
     @property
-    def _date(self) -> datetime:
-        """Gets the _date of this Article.
+    def post_time(self) -> int:
+        """Gets the post_time of this Article.
 
 
-        :return: The _date of this Article.
-        :rtype: datetime
+        :return: The post_time of this Article.
+        :rtype: int
         """
-        return self.__date
+        return self._post_time
 
-    @_date.setter
-    def _date(self, _date: datetime):
-        """Sets the _date of this Article.
+    @post_time.setter
+    def post_time(self, post_time: int):
+        """Sets the post_time of this Article.
 
 
-        :param _date: The _date of this Article.
-        :type _date: datetime
+        :param post_time: The post_time of this Article.
+        :type post_time: int
         """
-        if _date is None:
-            raise ValueError("Invalid value for `_date`, must not be `None`")  # noqa: E501
+        if post_time is None:
+            raise ValueError("Invalid value for `post_time`, must not be `None`")  # noqa: E501
 
-        self.__date = _date
+        self._post_time = post_time
 
     @property
     def category(self) -> str:

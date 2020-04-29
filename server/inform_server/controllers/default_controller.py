@@ -5,6 +5,17 @@ from inform_server.models.article import Article  # noqa: E501
 from inform_server.models.opinion import Opinion  # noqa: E501
 from inform_server import util
 
+import mysql.connector
+import time
+
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="informdb"
+)
+
+cursor = db.cursor()
 
 def get_articles(start=None, max_amount=None, author=None):  # noqa: E501
     """gets articles
@@ -20,8 +31,18 @@ def get_articles(start=None, max_amount=None, author=None):  # noqa: E501
 
     :rtype: List[Article]
     """
-    return 'do some magic!'
+   
+    m = max_amount if max_amount is not None else 100
+    s = start if start is not None else 1
 
+    if author is not None:
+        cursor.execute("SELECT * FROM articles WHERE id BETWEEN " + str(s) + " AND " + str((s + m)) + " AND author='" + author + "'") 
+    else:
+        cursor.execute("SELECT * FROM articles WHERE id BETWEEN " + str(s) + " AND " + str((s + m)))
+
+    out = cursor.fetchall()
+
+    return out
 
 def get_opinion(id=None, user=None):  # noqa: E501
     """gets opinion
@@ -48,9 +69,22 @@ def post_articles(body=None):  # noqa: E501
 
     :rtype: None
     """
+    res = {}
+
     if connexion.request.is_json:
         body = Article.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+
+        newArticle = (body.title, body.body, body.category, body.author, body.post_time)
+        addArticle = "INSERT INTO articles(title, body, category, author, time) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(addArticle, newArticle)
+        db.commit()
+
+        cursor.execute("SELECT id FROM articles WHERE title='" + body.title + "' AND author='" + body.author + "' AND category='" + body.category +"' AND time=" + str(body.post_time))
+        articleID = cursor.fetchall()
+
+        res = {"id": articleID[0][0], "title": body.title, "body": body.body, "category": body.category, "author": body.author, "postTime": body.post_time}
+
+    return res 
 
 
 def post_opinion(body=None):  # noqa: E501

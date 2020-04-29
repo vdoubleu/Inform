@@ -136,7 +136,7 @@ components:
       - author
       - body
       - category
-      - date
+      - postTime
       - title
       type: object
       properties:
@@ -147,10 +147,10 @@ components:
         author:
           type: string
           example: John Doe
-        date:
-          type: string
-          format: date-time
-          example: 2016-08-29T09:12:33.001Z
+        postTime:
+          type: integer
+          format: int64
+          example: 123451235
         category:
           type: string
           example: urget
@@ -161,7 +161,7 @@ components:
           type: string
           example: Lorum Ipsum...
       example:
-        date: 2016-08-29T09:12:33.001Z
+        postTime: 123451235
         author: John Doe
         id: 1234
         category: urget
