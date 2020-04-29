@@ -1,10 +1,8 @@
 import {SET_DATA} from '../actions/types';
 
-export const setData = idToken => dispatch => {
-   const data = {stuff: "hello"}
-
+export const setData = name => dispatch => {
    dispatch({
       type: SET_DATA,
-      payload: data
+      payload: name
    })
 }

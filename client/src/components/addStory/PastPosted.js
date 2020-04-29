@@ -7,11 +7,11 @@ import './PastPosted.css';
 const PastPosted = props => {
 
    useEffect(() => {
-      props.fetchPosts();
+      props.fetchPosts(props.authorName);
    }, []);
 
 
-   const postItems = props.myPosts.map(post => (
+   const postItems = props.myPosts.reverse().map(post => (
       <button key={post.id} id={post.id} type="button" className="list-group-item list-group-item-action postButtons">
          <h5> {post.title} </h5>
          <p> {post.body} </p>
@@ -29,6 +29,7 @@ const PastPosted = props => {
 
 const mapStateToProps = state => ({
    myPosts: state.myposts.myposts,
+   authorName: state.userdata.data
 });
 
 export default connect(mapStateToProps, {fetchPosts})(PastPosted);

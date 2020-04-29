@@ -9,7 +9,7 @@ import './Article.css';
 class Article extends Component {
    componentDidMount() {
       this.props.fetchArticles();
-
+      console.log(this.props.articles);
    }
 
 
@@ -25,7 +25,7 @@ class Article extends Component {
    }
 
    render() {
-      const articleItems = this.props.articles.map(article => (
+      const articleItems = this.props.articles.reverse().map(article => (
          <button key={article.id} id={article.id} type="button" className="list-group-item list-group-item-action articleButtons" onClick={this.btnClick.bind(this)}>
             <h5> {article.title} </h5>
             <p> {article.body} </p>

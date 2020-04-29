@@ -42,7 +42,9 @@ def get_articles(start=None, max_amount=None, author=None):  # noqa: E501
 
     out = cursor.fetchall()
 
-    return out
+    res = map(lambda a: {"id": a[0], "title": a[1], "body": a[2], "author": a[3], "category": a[4], "time": a[5]}, out)
+
+    return list(res)
 
 def get_opinion(id=None, user=None):  # noqa: E501
     """gets opinion

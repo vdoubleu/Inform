@@ -11,18 +11,28 @@ const AddStory = props => {
    const [postArticle, setPostArticle] = useState("");
    const [postCat, setPostCat] = useState(catArr[0]);
 
+
+   function resetForm(){
+      document.getElementById("input-form").reset();
+      setPostTitle("");
+      setPostArticle("");
+      setPostCat(catArr[0]);
+   }
+
    function sendData(e){
       if(postTitle !== "" && postArticle !== ""){
-         const newPost = {
+         var newPost = {
             title: postTitle,
             body: postArticle,
             category: postCat,
-            author: props.userData.name,
-            time: (new Date).getTime()
+            author: props.authorName,
+            postTime: (new Date).getTime()
          } 
 
          props.addPost(newPost); 
       }
+
+      resetForm();
    }
 
    return(
@@ -58,7 +68,7 @@ const AddStory = props => {
 }
 
 const mapStateToProps = state => ({
-   userData: state.userdata.data
+   authorName: state.userdata.data
 })
 
 export default connect(mapStateToProps, {addPost})(AddStory);
