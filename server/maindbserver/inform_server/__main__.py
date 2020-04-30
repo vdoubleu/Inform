@@ -11,7 +11,7 @@ def main():
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'Inform API'}, pythonic_params=True)
     CORS(app.app)
-    app.run(port=8080)
+    app.run(port=8080, debug=True)
 
 
 if __name__ == '__main__':

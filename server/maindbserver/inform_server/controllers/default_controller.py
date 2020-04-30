@@ -36,9 +36,9 @@ def get_articles(start=None, max_amount=None, author=None):  # noqa: E501
     s = start if start is not None else 1
 
     if author is not None:
-        cursor.execute("SELECT * FROM articles WHERE id BETWEEN " + str(s) + " AND " + str((s + m)) + " AND author='" + author + "'") 
+        cursor.execute("SELECT * FROM articles WHERE author='" + author + "' ORDER BY score LIMIT " + str(m) + " OFFSET " + str(s - 1)) 
     else:
-        cursor.execute("SELECT * FROM articles WHERE id BETWEEN " + str(s) + " AND " + str((s + m)))
+        cursor.execute("SELECT * FROM articles ORDER BY score LIMIT " + str(m) + " OFFSET " + str(s - 1))
 
     out = cursor.fetchall()
 
@@ -67,9 +67,18 @@ def get_opinion(article_id=None, user=None):  # noqa: E501
 
     if res:
         cursor.execute("SELECT value FROM opinion" + str(article_id))
-        out = (cursor.fetchall())
+        op = (cursor.fetchall())
 
-        return {"opinion": out[0][0]}
+        if len(op) == 0:
+            out = 0
+        else:
+            out = op[0][0]
+
+        cursor.execute("SELECT totalLikes, totalDislikes FROM articles where id=" + str(article_id))
+
+        likes = cursor.fetchall()
+
+        return {"opinion": out, "totalLikes": likes[0][0], "totalDislikes": likes[0][1]}
     else:
         return {"opinion": 0}
 
@@ -88,8 +97,8 @@ def post_articles(body=None):  # noqa: E501
     if connexion.request.is_json:
         body = Article.from_dict(connexion.request.get_json())  # noqa: E501
 
-        newArticle = (body.title, body.body, body.category, body.author, body.post_time)
-        addArticle = "INSERT INTO articles(title, body, category, author, time) VALUES (%s, %s, %s, %s, %s)"
+        newArticle = (body.title, body.body, body.category, body.author, body.post_time, 0, 0, 0) #score_post(body.post_time, 0, 0))
+        addArticle = "INSERT INTO articles(title, body, category, author, time, totalLikes, totalDislikes, score) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         cursor.execute(addArticle, newArticle)
         db.commit()
 
@@ -117,12 +126,32 @@ def post_opinion(body=None):  # noqa: E501
         body = Opinion.from_dict(connexion.request.get_json())  # noqa: E501
 
         cursor.execute("SELECT * FROM opinion" + str(body.id) + " WHERE user='" + body.user + "'")
+        
+        #checks if value already exists in the opinion table to determine whether to add or modify value
         if len(cursor.fetchall()) == 0:
             insertOpinion = "INSERT INTO opinion" + str(body.id) + " (user, value) VALUES (%s, %s)"
             newOpinion = (body.user, body.value)
             cursor.execute(insertOpinion, newOpinion)
         else:
+            cursor.execute("SELECT value FROM opinion" + str(body.id) + " WHERE user='" + body.user + "'")
+            oldVal = (cursor.fetchall())[0][0]
+
+            #decrease like/dislike count if necessary
+            if oldVal == 1:
+                cursor.execute("UPDATE articles SET totalLikes = totalLikes - 1 WHERE id=" + str(body.id))
+            elif oldVal == -1:
+                cursor.execute("UPDATE articles SET totalDislikes = totalDislikes - 1 WHERE id=" + str(body.id))
+
+            #update user value in the opinion table
             cursor.execute("UPDATE opinion" + str(body.id) + " SET value=" + str(body.value) + " WHERE user='" + body.user + "'")
+
+        #increase like/dislike count
+        if body.value == 1:
+            cursor.execute("UPDATE articles SET totalLikes = totalLikes + 1 WHERE id=" + str(body.id))
+        elif body.value == -1:
+            cursor.execute("UPDATE articles SET totalDislikes = totalDislikes + 1 WHERE id=" + str(body.id))
+
+
         db.commit()
 
     return 'success'
