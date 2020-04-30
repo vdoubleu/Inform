@@ -46,20 +46,32 @@ def get_articles(start=None, max_amount=None, author=None):  # noqa: E501
 
     return list(res)
 
-def get_opinion(id=None, user=None):  # noqa: E501
+def get_opinion(article_id=None, user=None):  # noqa: E501
     """gets opinion
 
     gets a users opinion on an article # noqa: E501
 
-    :param id: article id
-    :type id: int
+    :param article_id: article id
+    :type article_id: int
     :param user: user name
     :type user: str
 
     :rtype: int
     """
-    return 'do some magic!'
 
+    if article_id is None or user is None:
+        return "one or more arguments were null"
+
+    cursor.execute("SHOW TABLES LIKE 'opinion" + str(article_id) + "'")
+    res = cursor.fetchone()
+
+    if res:
+        cursor.execute("SELECT value FROM opinion" + str(article_id))
+        out = (cursor.fetchall())
+
+        return {"opinion": out[0][0]}
+    else:
+        return {"opinion": 0}
 
 def post_articles(body=None):  # noqa: E501
     """post article
@@ -84,6 +96,8 @@ def post_articles(body=None):  # noqa: E501
         cursor.execute("SELECT id FROM articles WHERE title='" + body.title + "' AND author='" + body.author + "' AND category='" + body.category +"' AND time=" + str(body.post_time))
         articleID = cursor.fetchall()
 
+        cursor.execute("CREATE TABLE opinion" + str(articleID[0][0]) + " (user VARCHAR(255), value smallint)")
+
         res = {"id": articleID[0][0], "title": body.title, "body": body.body, "category": body.category, "author": body.author, "postTime": body.post_time}
 
     return res 
@@ -101,4 +115,14 @@ def post_opinion(body=None):  # noqa: E501
     """
     if connexion.request.is_json:
         body = Opinion.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+
+        cursor.execute("SELECT * FROM opinion" + str(body.id) + " WHERE user='" + body.user + "'")
+        if len(cursor.fetchall()) == 0:
+            insertOpinion = "INSERT INTO opinion" + str(body.id) + " (user, value) VALUES (%s, %s)"
+            newOpinion = (body.user, body.value)
+            cursor.execute(insertOpinion, newOpinion)
+        else:
+            cursor.execute("UPDATE opinion" + str(body.id) + " SET value=" + str(body.value) + " WHERE user='" + body.user + "'")
+        db.commit()
+
+    return 'success'

@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
             ...state,
             opinion: action.payload,
          }
-      case FETCH_ARTICLES:
+      case FETCH_OPINION:
          return{
             ...state,
             opinion: action.payload,

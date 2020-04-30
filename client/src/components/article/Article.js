@@ -9,7 +9,6 @@ import './Article.css';
 class Article extends Component {
    componentDidMount() {
       this.props.fetchArticles();
-      console.log(this.props.articles);
    }
 
 

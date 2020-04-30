@@ -3,6 +3,7 @@
 import connexion
 
 from inform_server import encoder
+
 from flask_cors import CORS
 
 def main():
@@ -10,7 +11,7 @@ def main():
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'Inform API'}, pythonic_params=True)
     CORS(app.app)
-    app.run(port=8080, debug=True)
+    app.run(port=8080)
 
 
 if __name__ == '__main__':

@@ -18,20 +18,29 @@ export const setCurrArticle = articleIndex => dispatch => {
 }
 
 export const updateOpinion = newOpinion => dispatch => {
-   //fetch()
-   //.then(opinion => 
+   fetch('http://0.0.0.0:8080/VictorW/InformAPI/1.0.0/opinion', {
+      method: 'POST',
+      headers: {
+         'content-type': 'application/json'
+      },
+      body: JSON.stringify(newOpinion)
+   })
+   .then( 
    dispatch({
       type: UPDATE_OPINION,
-      payload: newOpinion
-   }) //);
+      payload: newOpinion.value
+   }));
 }
 
-export const fetchOpinion = articleID => dispatch => {
-   //fetch()
-   //.then(res->res.json())
-   //.then(opinion => 
+export const fetchOpinion = opinionData => dispatch => {
+   var url = new URL("http://0.0.0.0:8080/VictorW/InformAPI/1.0.0/opinion")
+   url.search = new URLSearchParams(opinionData).toString();
+
+   fetch(url)
+   .then(res=>res.json())
+   .then(out => 
    dispatch({
       type: FETCH_OPINION,
-      payload: articleID
-   }) //);
+      payload: out.opinion[0]  
+   }));
 }

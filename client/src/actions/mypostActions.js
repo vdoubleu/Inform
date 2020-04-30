@@ -1,8 +1,6 @@
 import {ADD_MY_POST, FETCH_MY_POSTS} from '../actions/types';
 
 export const fetchPosts = author => dispatch => {
-   console.log(author);
-
    fetch('http://0.0.0.0:8080/VictorW/InformAPI/1.0.0/article?start=1&maxAmount=50&author=' + author)
    .then(res=>res.json())
    .then(articles => dispatch({
@@ -13,8 +11,6 @@ export const fetchPosts = author => dispatch => {
 };
 
 export const addPost = postData => dispatch => {
-   console.log(postData);
-
    fetch('http://0.0.0.0:8080/VictorW/InformAPI/1.0.0/article', {
       method: 'POST',
       headers: {

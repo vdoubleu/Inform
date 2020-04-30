@@ -85,7 +85,7 @@ paths:
       description: gets a users opinion on an article
       operationId: get_opinion
       parameters:
-      - name: id
+      - name: articleId
         in: query
         description: article id
         required: false
@@ -184,5 +184,5 @@ components:
           description: the users opinion, 1 for positive, 0 for no opinion, -1 for
             negative
           format: int32
-          example: 1
+          example: 12
 

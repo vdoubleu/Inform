@@ -33,7 +33,7 @@ class TestDefaultController(BaseTestCase):
 
         gets opinion
         """
-        query_string = [('id', 789),
+        query_string = [('article_id', 789),
                         ('user', 'user_example')]
         response = self.client.open(
             '/VictorW/InformAPI/1.0.0/opinion',
