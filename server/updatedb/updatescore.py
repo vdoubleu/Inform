@@ -3,6 +3,8 @@
 import mysql.connector
 import time
 
+from score import score_post
+
 db = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -10,7 +12,7 @@ db = mysql.connector.connect(
     database="informdb"
 )
 
-UPDATE_WAIT_TIME = 2
+UPDATE_WAIT_TIME = 60 #in seconds
 
 
 cursor = db.cursor()
@@ -28,7 +30,7 @@ while True:
         entryDislikes = entry[3]
         oldEntryScore = entry[4]
         
-        newScore = 0 #score_post(entryPostTime, entryLikes, entryDislikes)
+        newScore = score_post(entryPostTime, entryLikes, entryDislikes)
 
         cursor.execute("UPDATE articles SET score=" + str(newScore) + " WHERE id=" + str(entryId))
         db.commit()

@@ -8,6 +8,8 @@ from inform_server import util
 import mysql.connector
 import time
 
+from .score import score_post
+
 db = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -97,7 +99,7 @@ def post_articles(body=None):  # noqa: E501
     if connexion.request.is_json:
         body = Article.from_dict(connexion.request.get_json())  # noqa: E501
 
-        newArticle = (body.title, body.body, body.category, body.author, body.post_time, 0, 0, 0) #score_post(body.post_time, 0, 0))
+        newArticle = (body.title, body.body, body.category, body.author, body.post_time, 0, 0, score_post(body.post_time, 0, 0))
         addArticle = "INSERT INTO articles(title, body, category, author, time, totalLikes, totalDislikes, score) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         cursor.execute(addArticle, newArticle)
         db.commit()
