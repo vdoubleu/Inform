@@ -8,3 +8,6 @@ Inform has several defining features to make for a great user experience. Articl
 This app was built using ReactJS and Redux as well as Bootstrap for many of the user interface components. The core of the Python Flask REST API was generated using Swagger. This allowed for easy generation of documentation as the REST API is designed. Interactions with the MYSQL database were doing through Python as well. All the backend logic was also done using Python.
 
 User authentication was delegated to third party authentication services like Google Sign In to guarantee the confidentiality and security of users and their information.
+
+There are *many* improvements that could be made to this project in terms of both organisation and how the entire repo is setup. Instead of fixing this one up, I've instead decided to rewrite the entire project. I will be doing most of the new work in the following repository.
+https://github.com/vdoubleu/inform-2
